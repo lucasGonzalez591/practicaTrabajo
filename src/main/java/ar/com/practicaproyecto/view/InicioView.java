@@ -1,6 +1,7 @@
 package ar.com.practicaproyecto.view;
 
 import ar.com.practicaproyecto.controller.AlumnoController;
+import ar.com.practicaproyecto.controller.CuatrimestreController;
 import ar.com.practicaproyecto.controller.ProfesorController;
 import ch.qos.logback.core.encoder.JsonEscapeUtil;
 
@@ -13,10 +14,12 @@ public class InicioView {
     // Entidades básicas
     AlumnoController alumnoController = new AlumnoController();
     ProfesorController profesorController = new ProfesorController();
+    CuatrimestreController cuatrimestreController = new CuatrimestreController();
 
     //vistas
     AlumnoView alumnoView = new AlumnoView(alumnoController,scanner);
     ProfesorView profesorView = new ProfesorView(profesorController,scanner);
+    CuatrimestreView cuatrimestreView = new CuatrimestreView(cuatrimestreController,scanner);
 
 
 
@@ -135,6 +138,7 @@ public class InicioView {
             if(scanner.hasNext()){
                 int op = scanner.nextInt();
                 switch (op){
+                    case 1 -> cuatrimestreView.iniciar();
                     case 4 -> volver = true;
                     default -> System.out.println("ingrese una opcion valida");
                 }
