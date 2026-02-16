@@ -2,6 +2,7 @@ package ar.com.practicaproyecto.view;
 
 import ar.com.practicaproyecto.controller.AlumnoController;
 import ar.com.practicaproyecto.controller.CuatrimestreController;
+import ar.com.practicaproyecto.controller.MateriaController;
 import ar.com.practicaproyecto.controller.ProfesorController;
 import ch.qos.logback.core.encoder.JsonEscapeUtil;
 
@@ -15,11 +16,13 @@ public class InicioView {
     AlumnoController alumnoController = new AlumnoController();
     ProfesorController profesorController = new ProfesorController();
     CuatrimestreController cuatrimestreController = new CuatrimestreController();
+    MateriaController materiaController = new MateriaController();
 
     //vistas
     AlumnoView alumnoView = new AlumnoView(alumnoController,scanner);
     ProfesorView profesorView = new ProfesorView(profesorController,scanner);
     CuatrimestreView cuatrimestreView = new CuatrimestreView(cuatrimestreController,scanner);
+    MateriaView materiaView = new MateriaView(materiaController,scanner);
 
 
 
@@ -89,12 +92,13 @@ public class InicioView {
             System.out.println("\n------Estructura academica------");
             System.out.println("1.Carreras");
             System.out.println("2.Planes de estudio");
-            System.out.println("3.MAterias");
+            System.out.println("3.Materias");
             System.out.println("4.Volver al menu principal");
             System.out.print("selecione: ");
             if(scanner.hasNext()){
                 int op = scanner.nextInt();
                 switch (op){
+                    case 3 -> materiaView.iniciar();
                     case 4 -> volver = true;
                     default -> System.out.println("Ingrese una opcion valida");
                 }
