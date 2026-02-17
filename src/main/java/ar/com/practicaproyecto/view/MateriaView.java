@@ -64,17 +64,22 @@ public class MateriaView {
         return opcion == 1;
     }
 
-   private String obtenerNombresCorrelativas(Materia materia ) {
-       if (materia.getCorrelativas() == null || materia.getCorrelativas().isEmpty()) {
-           return "No posee correlativas";
-       }
+    private String obtenerNombresCorrelativas(Materia m) {
+        if (m.getCorrelativas() == null || m.getCorrelativas().isEmpty()) {
+            return "NO POSEE";
+        }
 
-       return materia.getCorrelativas().stream()
-               .map(Materia::getNombre)
-               .reduce((a, b) -> a + ", " + b)
-               .orElse("No posee correlativas");
+        return m.getCorrelativas().stream()
+                .filter(Materia::isActivo) // Solo las que están activas
+                .map(Materia::getNombre)
+                .reduce((a, b) -> a + ", " + b)
+                .orElse("NO POSEE");
+    }
 
-   }
+
+
+
+
     private void mostrarMateria(Materia materia){
         if(materia.isActivo()) {
             System.out.println(
@@ -259,12 +264,18 @@ public class MateriaView {
     private void mostrarCorrelativas(Materia materiaActual) {
         System.out.println("\nCorrelativas:");
 
-        if (materiaActual.getCorrelativas().isEmpty()) {
-            System.out.println("No posee.");
-            return;
+        boolean encontroActiva = false;
+
+        for (Materia m : materiaActual.getCorrelativas()) {
+            if (m.isActivo()) { // <--- FILTRO MANUAL
+                System.out.println("MATERIA: " + m.getNombre());
+                encontroActiva = true;
+            }
         }
 
-        materiaActual.getCorrelativas().forEach(m -> System.out.println("MATERIA: " + m.getNombre()));
+        if (!encontroActiva) {
+            System.out.println("No posee correlativas activas.");
+        }
     }
 
 }

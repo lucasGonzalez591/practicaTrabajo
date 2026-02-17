@@ -17,7 +17,7 @@ public class MateriaRepositoryImpl implements MateriaRepository {
     private void cargarDatos(){
         Materia matematica1 = new Materia("An25Mat1","Matematica 1","1");
         Materia matematica2 = new Materia("An25Mat2","Matematica 2","1");
-        Materia matematica3 = new Materia("An25Mat2","Matematica 3","2");
+        Materia matematica3 = new Materia("An25Mat3","Matematica 3","2");
         Materia ingles1 = new Materia("An25Ing1","Ingles 1", "1");
         Materia ingles2 = new Materia("An25Ing2","Ingles 2", "1");
 
@@ -27,7 +27,10 @@ public class MateriaRepositoryImpl implements MateriaRepository {
 
         List<Materia> correMat3 = new ArrayList<>();
         correMat3.add(matematica2);
+        correMat3.add(matematica1);
+        correMat3.add(ingles2);
         matematica3.setCorrelativas(correMat3);
+
 
         List<Materia> correIngle2 = new ArrayList<>();
         correIngle2.add(ingles1);
