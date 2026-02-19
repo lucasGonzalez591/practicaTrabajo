@@ -213,7 +213,7 @@ public class MateriaView {
         }
     }
 
-
+    // en este metodo hay que agrgar el filtro
     private void agregarCorrelativa(Materia materia){
         List<Materia> disponibles = materiaController.findAll();
         if(disponibles.isEmpty()){

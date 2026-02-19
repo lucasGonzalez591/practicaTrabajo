@@ -1,9 +1,6 @@
 package ar.com.practicaproyecto.view;
 
-import ar.com.practicaproyecto.controller.AlumnoController;
-import ar.com.practicaproyecto.controller.CuatrimestreController;
-import ar.com.practicaproyecto.controller.MateriaController;
-import ar.com.practicaproyecto.controller.ProfesorController;
+import ar.com.practicaproyecto.controller.*;
 import ch.qos.logback.core.encoder.JsonEscapeUtil;
 
 import java.util.Scanner;
@@ -17,13 +14,14 @@ public class InicioView {
     ProfesorController profesorController = new ProfesorController();
     CuatrimestreController cuatrimestreController = new CuatrimestreController();
     MateriaController materiaController = new MateriaController();
+    PlanEstudioController planEstudioController  = new PlanEstudioController();
 
     //vistas
     AlumnoView alumnoView = new AlumnoView(alumnoController,scanner);
     ProfesorView profesorView = new ProfesorView(profesorController,scanner);
     CuatrimestreView cuatrimestreView = new CuatrimestreView(cuatrimestreController,scanner);
     MateriaView materiaView = new MateriaView(materiaController,scanner);
-
+    PlanEstudioView planEstudioView = new PlanEstudioView(planEstudioController,materiaController,scanner);
 
 
     //METODO PRINCIPAL
@@ -98,6 +96,7 @@ public class InicioView {
             if(scanner.hasNext()){
                 int op = scanner.nextInt();
                 switch (op){
+                    case 2 -> planEstudioView.iniciar();
                     case 3 -> materiaView.iniciar();
                     case 4 -> volver = true;
                     default -> System.out.println("Ingrese una opcion valida");
