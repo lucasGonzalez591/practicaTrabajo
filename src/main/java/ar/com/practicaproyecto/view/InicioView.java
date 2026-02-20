@@ -15,14 +15,14 @@ public class InicioView {
     CuatrimestreController cuatrimestreController = new CuatrimestreController();
     MateriaController materiaController = new MateriaController();
     PlanEstudioController planEstudioController  = new PlanEstudioController();
-
+    CarreraController carreraController = new CarreraController();
     //vistas
     AlumnoView alumnoView = new AlumnoView(alumnoController,scanner);
     ProfesorView profesorView = new ProfesorView(profesorController,scanner);
     CuatrimestreView cuatrimestreView = new CuatrimestreView(cuatrimestreController,scanner);
     MateriaView materiaView = new MateriaView(materiaController,scanner);
     PlanEstudioView planEstudioView = new PlanEstudioView(planEstudioController,materiaController,scanner);
-
+    CarreraView carreraView = new CarreraView(carreraController,planEstudioController,scanner);
 
     //METODO PRINCIPAL
     public void iniciar(){
@@ -96,6 +96,7 @@ public class InicioView {
             if(scanner.hasNext()){
                 int op = scanner.nextInt();
                 switch (op){
+                    case 1 -> carreraView.iniciar();
                     case 2 -> planEstudioView.iniciar();
                     case 3 -> materiaView.iniciar();
                     case 4 -> volver = true;
