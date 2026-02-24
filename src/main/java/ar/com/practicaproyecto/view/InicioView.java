@@ -16,6 +16,9 @@ public class InicioView {
     MateriaController materiaController = new MateriaController();
     PlanEstudioController planEstudioController  = new PlanEstudioController();
     CarreraController carreraController = new CarreraController();
+
+    AlumnoInscriptoCarreraController alumnoInscriptoCarreraController = new AlumnoInscriptoCarreraController();
+
     //vistas
     AlumnoView alumnoView = new AlumnoView(alumnoController,scanner);
     ProfesorView profesorView = new ProfesorView(profesorController,scanner);
@@ -23,6 +26,9 @@ public class InicioView {
     MateriaView materiaView = new MateriaView(materiaController,scanner);
     PlanEstudioView planEstudioView = new PlanEstudioView(planEstudioController,materiaController,scanner);
     CarreraView carreraView = new CarreraView(carreraController,planEstudioController,scanner);
+
+    AlumnoInscriptoCarreraView alumnoInscriptoCarreraView = new AlumnoInscriptoCarreraView(alumnoInscriptoCarreraController
+            ,alumnoController,carreraController,planEstudioController,scanner);
 
     //METODO PRINCIPAL
     public void iniciar(){
@@ -52,7 +58,7 @@ public class InicioView {
     private void mostrarMenuPrincipal(){
         System.out.println("\n-----SISTEMA DE GESTIÓN--------");
         System.out.println("1.Persona (alumno,profesores)");
-        System.out.println("2.Estructura academica(carreras,planes,materias");
+        System.out.println("2.Estructura academica(carreras,planes,materias)");
         System.out.println("3.Cursada e inscripciones(comisiones,inscripcion a carrera)");
         System.out.println("4.configuracion (cuatrimestres,horarios)");
         System.out.println("5.Salir");
@@ -120,6 +126,7 @@ public class InicioView {
             if(scanner.hasNext()){
                 int op = scanner.nextInt();
                 switch (op){
+                    case 2 -> alumnoInscriptoCarreraView.iniciar();
                     case 3 -> volver  = true;
                     default -> System.out.println("ingrese una opcion valida");
                 }
