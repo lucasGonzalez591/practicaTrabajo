@@ -16,6 +16,7 @@ public class InicioView {
     MateriaController materiaController = new MateriaController();
     PlanEstudioController planEstudioController  = new PlanEstudioController();
     CarreraController carreraController = new CarreraController();
+    HorarioController horarioController = new HorarioController();
 
     AlumnoInscriptoCarreraController alumnoInscriptoCarreraController = new AlumnoInscriptoCarreraController();
     ModuloController moduloController = new ModuloController();
@@ -32,6 +33,7 @@ public class InicioView {
             ,alumnoController,carreraController,planEstudioController,scanner);
 
     ModuloView moduloView = new ModuloView(moduloController,scanner);
+    HorarioView horarioView = new HorarioView(horarioController,carreraController,cuatrimestreController,moduloController,scanner);
 
     //METODO PRINCIPAL
     public void iniciar(){
@@ -153,6 +155,7 @@ public class InicioView {
                 int op = scanner.nextInt();
                 switch (op){
                     case 1 -> cuatrimestreView.iniciar();
+                    case 2 -> horarioView.iniciar();
                     case 3 -> moduloView.iniciar();
                     case 4 -> volver = true;
                     default -> System.out.println("ingrese una opcion valida");
